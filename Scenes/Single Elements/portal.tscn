@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7bcthejw678k"]
+
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
+[ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkurh"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(0, 32, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8mhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkurh")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 4.0
+}]
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_ysx7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a8mhh")
+animation = &"portal"
+autoplay = "portal"

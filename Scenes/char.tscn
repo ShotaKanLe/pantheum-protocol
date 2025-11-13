@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://oygk6nwavp0l"]
+
+[ext_resource type="Script" path="res://Scripts/char.gd" id="1_j84vx"]
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="2_imqxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35f7x"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6afg"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lioen"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpcdp"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hlr6"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5phjx"]
+atlas = ExtResource("2_imqxn")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxum1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35f7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6afg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lioen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpcdp")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hlr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5phjx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[node name="char" type="Node2D"]
+script = ExtResource("1_j84vx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rxum1")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.500919
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
