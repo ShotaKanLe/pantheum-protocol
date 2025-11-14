@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7bcthejw678k"]
+[gd_scene load_steps=6 format=3 uid="uid://d4fcixsd2lk4o"]
 
-[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
-[ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
+[ext_resource type="Script" path="res://Scripts/Single Elements/movable_block.gd" id="1_6vcba"]
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_i776m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkurh"]
-atlas = ExtResource("1_d05sh")
+atlas = ExtResource("1_i776m")
 region = Rect2(0, 32, 20, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8mhh"]
@@ -21,8 +21,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47vll"]
 size = Vector2(20, 13)
 
-[node name="Portal" type="Node2D"]
-script = ExtResource("1_ysx7c")
+[node name="MovableBlock" type="Node2D"]
+script = ExtResource("1_6vcba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

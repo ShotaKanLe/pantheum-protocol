@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://oygk6nwavp0l"]
+[gd_scene load_steps=11 format=3 uid="uid://oygk6nwavp0l"]
 
 [ext_resource type="Script" path="res://Scripts/char.gd" id="1_j84vx"]
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="2_imqxn"]
@@ -58,6 +58,9 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44doy"]
+size = Vector2(16, 13)
+
 [node name="char" type="Node2D"]
 script = ExtResource("1_j84vx")
 
@@ -69,4 +72,11 @@ frame_progress = 0.500919
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_44doy")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
