@@ -11,8 +11,8 @@ const tileSize = Global.TILE_SIZE
 const gridSize = Global.GRID_SIZE
 
 var tileArray = [[
-	null, null, null
-], [null, null, null], [null, null, null]]
+	null, 'portal', null
+], [null, null, null], [null, null, 'portal']]
 
 var tileInformation = []
 
