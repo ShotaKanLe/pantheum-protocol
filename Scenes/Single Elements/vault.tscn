@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://2cihepckoysq"]
+
+[ext_resource type="Script" path="res://Scripts/vault.gd" id="1_sscuk"]
+[ext_resource type="Texture2D" uid="uid://c3o2rw7ke8orn" path="res://Assets/DummyAndika/vault.png" id="2_lq43w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3luo6"]
+atlas = ExtResource("2_lq43w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12uql"]
+atlas = ExtResource("2_lq43w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p007h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3luo6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12uql")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhm0c"]
+size = Vector2(34, 40)
+
+[node name="Vault" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_sscuk")
+
+[node name="AnimateSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p007h")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_lhm0c")

@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgflrxcp72x7h"]
+
+[ext_resource type="Script" path="res://Scripts/energy_core.gd" id="1_p18ic"]
+[ext_resource type="Texture2D" uid="uid://cx3eg7he1urs" path="res://Assets/DummyAndika/energy_core_pickup.png" id="2_i74ca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae1om"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_254p8"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj5kx"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjdxh"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym0cj"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8do2o"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faxsl"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udgl3"]
+atlas = ExtResource("2_i74ca")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16l8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae1om")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_254p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj5kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjdxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym0cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8do2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faxsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udgl3")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jxki"]
+radius = 21.0
+
+[node name="EnergyCore" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_p18ic")
+
+[node name="Animasi" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_16l8i")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_1jxki")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

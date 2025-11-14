@@ -1,40 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7bcthejw678k"]
+[gd_scene load_steps=4 format=3 uid="uid://b7bcthejw678k"]
 
-[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
 [ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
+[ext_resource type="Texture2D" uid="uid://d03kl6kmxmero" path="res://Assets/portal.png" id="2_0eyx5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vkurh"]
-atlas = ExtResource("1_d05sh")
-region = Rect2(0, 32, 20, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a8mhh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vkurh")
-}],
-"loop": true,
-"name": &"portal",
-"speed": 4.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47vll"]
-size = Vector2(20, 13)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywlmh"]
+radius = 7.0
+height = 14.0
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_ysx7c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_a8mhh")
-animation = &"portal"
-autoplay = "portal"
+scale = Vector2(0.243353, 0.243353)
+texture = ExtResource("2_0eyx5")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_47vll")
+shape = SubResource("CapsuleShape2D_ywlmh")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

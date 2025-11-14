@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ccsd58txdbx"]
+
+[ext_resource type="Script" path="res://Scripts/Boards/7x6.gd" id="1_0sbw6"]
+[ext_resource type="PackedScene" uid="uid://dsl66hifyav5r" path="res://Scenes/inGame.tscn" id="2_cif0s"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_0sbw6")
+
+[node name="inGame" parent="." instance=ExtResource("2_cif0s")]

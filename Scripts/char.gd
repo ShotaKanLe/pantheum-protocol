@@ -46,7 +46,7 @@ func movementCharacter():
 			
 func setPlayerPosition(tile):
 	position.x = tile.position.x
-	position.y = tile.position.y+4
+	position.y = tile.position.y+2
 	
 func getTileInformation(pos = Vector2(0,0)):
 	var parent = get_parent()
@@ -73,8 +73,13 @@ func _on_timer_timeout():
 	$Timer.start()
 	
 func _on_area_2d_area_entered(area):
-	var obj = area.get_parent()
-	if obj.constantName == 'movableBlock':
+	var obj = area
+	
+	if obj.constantName == "Vault":
+		obj.touchVault(self)
+	elif obj.constantName == 'EnergyCore':
+		obj.touchCore(self)
+	elif obj.constantName == 'movableBlock':
 		var ifBlockMove = obj.moveBlock(comeFromPosition)
 		if ifBlockMove != 'idle':
 			obj.moveBlock(comeFromPosition)
