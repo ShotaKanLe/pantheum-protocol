@@ -6,6 +6,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_fug5q"]
 font = ExtResource("1_vx701")
+font_size = 100
 
 [node name="Label" type="Label"]
 offset_right = 31.0
