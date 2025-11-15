@@ -37,6 +37,5 @@ func _on_body_entered(body):
 	_set_active(true)
 
 func _on_body_exited(body):
-	game.despawn_mechanic(action_value,Vector2(0,0))
-	animated_sprite_2d.play("off")
-#	_set_active(false)
+	_set_active(false)   # biar mengikuti flow normal
+

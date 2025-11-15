@@ -52,6 +52,7 @@ func move_to(next: Vector2i):
 
 
 func _on_body_entered(body):
+	Global.energy = 0
 	print("Bee collided with: ", body)
 	print("Game Over")
 	get_tree().reload_current_scene()

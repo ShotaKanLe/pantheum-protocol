@@ -85,21 +85,23 @@ const monitorScene = preload("res://Scenes/Single Elements/monitor.tscn")
 const vaultScene = preload("res://Scenes/Single Elements/vault.tscn")
 const hiddenScene = preload("res://Scenes/Single Elements/hidden.tscn")
 const beeScene = preload("res://Scenes/Single Elements/bee.tscn")
+const countdownTriggerScene = preload("res://Scenes/Single Elements/countdown_trigger.tscn")
 var portalsPosition = []
 var escalatorsPosition = []
 @onready var timer = $Timer
 @onready var count_down_label = $CountdownContainer/CountDownLabel
 
 var portal_cooldown := false
-var energy = 0
+
 var countdown_value := 10
 
 # Energy & Countdown
 func add_energy():
-	energy += 1
+	Global.energy += 1
 
-	if energy == 3:
+	if Global.energy == 3:
 		start_countdown()
+		pass
 
 # Start countdown from 10
 func start_countdown():
@@ -120,6 +122,7 @@ func _on_timer_timeout():
 
 func _on_countdown_finished():
 	count_down_label.text = "Game Over!"
+	Global.energy = 0
 	get_tree().reload_current_scene()
 	# Example: reset energy, spawn portal, etc
 
@@ -137,14 +140,14 @@ var gridSize = Global.GRID_SIZE
 #]
 
 var tileArray = [
-	[null, null, null, null, null, null, null, null],
-	['fragile', null, null, null, null, null, null, null],
-	[null, null, null, null, null, {type="portal", pair=Vector2(0,3), startActive = true}, null, null],
-	[null, null, 'portal', null, null, null, null, null],
-	[null, null, null, null, null, null, null, null],
-	[null, null, null, null, null, null, null, null],
-	['fragile', null, null, null, null, null, null, null],
-]
+	[null, null, 'broken', 'fragile', null, null],
+	[null, {type="button", mech="portal"}, 'countdownTrigger', null, {type="portal", pair=Vector2(0,3), startActive = true}, null],
+	['fragile', null, 'movingBlock', null, {type="portal", pair=Vector2(4,5), startActive = false}, null], 
+	[{type="portal", pair=Vector2(4,1), startActive = true}, null, 'energy', null, null, 'vault'],
+	[null, 'hidden', null, null, null, {type="bee", path=[Vector2(-1,0),Vector2(-1,0),Vector2(-1,0),Vector2(-1,0),Vector2(0,-1),Vector2(0,-1),Vector2(0,-1),Vector2(0,-1), Vector2(0,1),Vector2(0,1),Vector2(0,1),Vector2(0,1),Vector2(0,1),Vector2(0,1),Vector2(0,1)]}],
+	['energy', null, {type="pressure", mech="portal"}, 'fragile', {type="portal", pair=Vector2(4,2), startActive = false}, 'energy']
+];
+
 
 func _ready():
 	$inGame.play()
@@ -155,6 +158,7 @@ func _ready():
 	setBoard()
 	spawnTiles()
 	setPlayerPosition(getTileInformation(Vector2(1,0)))
+	$char.identityNumber = Vector2(1,0)
 
 func _process(delta):
 	movementCharacter()
@@ -186,15 +190,25 @@ func spawnTiles():
 					b.path = tile_type.path     # give its movement path
 					$TileManager.add_child(b)
 					set_object_position(b, x, y)
-			else:
-				if tile_type == "portal":
+				if tile_type.type == "escalator":
+					var f = escalatorScene.instantiate()
+					f.identityNumber = Vector2(x, y)
+					f.direction = tile_type.direction
+					$escalatorManager.add_child(f)
+					set_object_position(f, x, y)
+	
+				if tile_type.type == "portal":
 					var p = portalScene.instantiate()
 					p.identityNumber = Vector2(x,y)
-					portalsPosition.append(p.identityNumber)
-					p.target_position = get_other_portal(x,y)
+					p.target_position = tile_type.pair
+
 					$portalManager.add_child(p)
 					set_object_position(p, x, y)
-				elif tile_type == "fragile" or tile_type == "broken": # <-- Tangani kedua tipe
+					p.startActive = tile_type.startActive
+					if p.startActive:
+						p.activated()
+			else:
+				if tile_type == "fragile" or tile_type == "broken": # <-- Tangani kedua tipe
 					var f = fragileScene.instantiate()
 					f.identityNumber = Vector2(x,y)
 					
@@ -208,12 +222,6 @@ func spawnTiles():
 					var f = energyScene.instantiate()
 					f.identityNumber = Vector2(x,y)
 					$TileManager.add_child(f)
-					set_object_position(f, x, y)
-				elif tile_type == "escalator":
-					var f = escalatorScene.instantiate()
-					f.identityNumber = Vector2(x,y)
-					escalatorsPosition.append(f.identityNumber)
-					$escalatorManager.add_child(f)
 					set_object_position(f, x, y)
 				elif tile_type == "movingBlock":
 					var f = movingBlckScene.instantiate()
@@ -230,7 +238,11 @@ func spawnTiles():
 					f.identityNumber = Vector2(x,y)
 					$HiddenManager.add_child(f)
 					set_object_position(f, x, y)
-					
+				elif tile_type == "countdownTrigger":
+					var f = countdownTriggerScene.instantiate()
+					f.identityNumber = Vector2(x,y)
+					$TileManager.add_child(f)
+					set_object_position(f, x, y)	
 	#Play Hidden Animation
 	var hiddens = $HiddenManager.get_children()
 	for hidden in hiddens:
@@ -301,7 +313,7 @@ func movementCharacter():
 		setPlayerPosition(getTileInformation(next))
 		$char.identityNumber = next
 		return
-	if t == null or  t == "vault" or t == "fragile" or t == "energy" or t == "portal" or t == "button" or t == "pressure" or t == "escalator" or t == "hidden":
+	if t == null or t == "countdownTrigger" or  t == "vault" or t == "fragile" or t == "energy" or t == "portal" or t == "button" or t == "pressure" or t == "escalator" or t == "hidden":
 		setPlayerPosition(getTileInformation(next))
 		$char.identityNumber = next
 		return
@@ -427,7 +439,7 @@ func is_walkable(pos: Vector2i) -> bool:
 	if t == "broken":
 		return false
 	# tile yang boleh dimasuki player
-	if  t == "vault" or t == "fragile" or t == "energy" or t == "portal" or t == "button" or t == "pressure" or t == "escalator" or t == "hidden":
+	if  t == "countdownTrigger" or t == "vault" or t == "fragile" or t == "energy" or t == "portal" or t == "button" or t == "pressure" or t == "escalator" or t == "hidden":
 		return true
 	return t == null
 	
@@ -441,7 +453,7 @@ func is_block_pushable(pos: Vector2i) -> bool:
 	# hanya boleh pindah ke tile kosong
 	if t == "broken":
 		return false
-	if t == "fragile" or t == "button" or t == "pressure" or t == "energy" or t == "escalator" or t == "hidden":
+	if t == "countdownTrigger" or t == "fragile" or t == "button" or t == "pressure" or t == "energy" or t == "escalator" or t == "hidden":
 		return true
 	return t == null
 
@@ -519,8 +531,8 @@ func despawn_mechanic(mechanic: String, pos: Vector2):
 		var portals = $portalManager.get_children()
 		print(portalsPosition)
 		for portal in portals:
-			portal.deactivated()
-			print(portal.deactivated())
+			if portal.startActive == false:
+				portal.deactivated()
 		
 		return
 	if mechanic == "escalator":

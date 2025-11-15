@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://criclo0xy77ew"]
+
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_eoj2u"]
+[ext_resource type="Script" path="res://Scripts/Single Elements/countdown_trigger.gd" id="1_pbseo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xma6b"]
+atlas = ExtResource("1_eoj2u")
+region = Rect2(40, 64, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oa1df"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xma6b")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxlnk"]
+size = Vector2(16, 11)
+
+[node name="countdown_trigger" type="Area2D"]
+z_index = 400
+collision_mask = 2
+script = ExtResource("1_pbseo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oa1df")
+animation = &"off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bxlnk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -25,4 +25,4 @@ func _on_area_entered(area):
 
 func _on_body_entered(body):
 	_set_active(true)
-
+	queue_free()
