@@ -129,12 +129,13 @@ var gridSize = Vector2i(6, 6)
 
 var tileArray = [
 	[null, null, 'broken', 'fragile', null, null],
-	[null, {type="bee", path=[Vector2(0, 1),Vector2(0, 1),Vector2(0,1),Vector2(1,0),Vector2(1,0), Vector2(-1,0),Vector2(-1,0), Vector2(0,-1), Vector2(0,-1), Vector2(0,-1)] }, null, null, 'energy', null],
-	['fragile', null, 'movingBlock', 'escalator', null, 'portal'],
-	[{type="button", mech="portal"}, 'portal', 'energy', 'escalator', null, 'vault'],
-	[null, null, null, null, 'fragile', null],
-	['energy', null, {type="pressure", mech="escalator"}, 'fragile', 'hidden', 'energy']
-]
+	[null, null, null, null, {type="portal", pair=Vector2(0,3)}, null],
+	['fragile', null, 'movingBlock', null, {type="portal", pair=Vector2(4,5)}, null], 
+	[{type="portal", pair=Vector2(4,1)}, null, 'energy', null, null, 'vault'],
+	[null, null, null, null, null, null],
+	['energy', null, {type="pressure", mech="portal"}, 'fragile', {type="portal", pair=Vector2(4,2)}, 'energy']
+];
+
 
 func _ready():
 	$inGame.play()
@@ -145,6 +146,7 @@ func _ready():
 	setBoard()
 	spawnTiles()
 	setPlayerPosition(getTileInformation(Vector2(1,0)))
+	$char.identityNumber = Vector2(1,0)
 
 func _process(delta):
 	movementCharacter()
@@ -176,15 +178,22 @@ func spawnTiles():
 					b.path = tile_type.path     # give its movement path
 					$TileManager.add_child(b)
 					set_object_position(b, x, y)
-			else:
-				if tile_type == "portal":
+				if tile_type.type == "escalator":
+					var f = escalatorScene.instantiate()
+					f.identityNumber = Vector2(x, y)
+					f.direction = tile_type.direction
+					$escalatorManager.add_child(f)
+					set_object_position(f, x, y)
+	
+				if tile_type.type == "portal":
 					var p = portalScene.instantiate()
 					p.identityNumber = Vector2(x,y)
-					portalsPosition.append(p.identityNumber)
-					p.target_position = get_other_portal(x,y)
+					p.target_position = tile_type.pair
+
 					$portalManager.add_child(p)
 					set_object_position(p, x, y)
-				elif tile_type == "fragile" or tile_type == "broken": # <-- Tangani kedua tipe
+			else:
+				if tile_type == "fragile" or tile_type == "broken": # <-- Tangani kedua tipe
 					var f = fragileScene.instantiate()
 					f.identityNumber = Vector2(x,y)
 					
@@ -198,12 +207,6 @@ func spawnTiles():
 					var f = energyScene.instantiate()
 					f.identityNumber = Vector2(x,y)
 					$TileManager.add_child(f)
-					set_object_position(f, x, y)
-				elif tile_type == "escalator":
-					var f = escalatorScene.instantiate()
-					f.identityNumber = Vector2(x,y)
-					escalatorsPosition.append(f.identityNumber)
-					$escalatorManager.add_child(f)
 					set_object_position(f, x, y)
 				elif tile_type == "movingBlock":
 					var f = movingBlckScene.instantiate()
