@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8w0lb8w3vb38"]
 
 [ext_resource type="Script" path="res://Scripts/Single Elements/monitor.gd" id="1_26y2h"]
-[ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="1_bflfg"]
+[ext_resource type="Texture2D" uid="uid://buwvckqpmo86o" path="res://Assets/TV/default/defaultMid.png" id="2_p5n2e"]
 
 [node name="Monitor" type="Node2D"]
 script = ExtResource("1_26y2h")
 spriteName = "basicFaceDown"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bflfg")
-region_enabled = true
+position = Vector2(-2, 0)
+scale = Vector2(0.0665509, 0.0665509)
+texture = ExtResource("2_p5n2e")
 region_rect = Rect2(32, 0, 32, 32)

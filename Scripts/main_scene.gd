@@ -1,8 +1,56 @@
 extends Node2D
 
+func updateVisualLevel():
+	
+	Global.statusLevelTutorial
+	Global.statusLevelNetwork
+	Global.statusLevelDesign
+	Global.statusLevelProgram
+	
+	if Global.statusLevelTutorial >= 1:
+		$levelOption/Tutorial1/BlackHole.modulate = Color(100, 100, 100)
+	if Global.statusLevelTutorial >= 2:
+		$levelOption/Tutorial2/BlackHole2.modulate = Color(100, 100, 100)
+		$levelOption/line/Line1.modulate = Color(100, 100, 100)
+	if Global.statusLevelTutorial >= 3:
+		$levelOption/Prolog/BlackHole5.modulate = Color(100, 100, 100)
+		$levelOption/line/Line2.modulate = Color(100, 100, 100)
+		
+	if Global.statusLevelNetwork >= 1:
+		$levelOption/Network1/BlackHole7.modulate = Color(100, 100, 100)
+		$levelOption/line/LineNetwork1.modulate = Color(100, 100, 100)
+	if Global.statusLevelNetwork >= 2:
+		$levelOption/Network2/BlackHole8.modulate = Color(100, 100, 100)
+		$levelOption/line/LineNetwork2.modulate = Color(100, 100, 100)
+	if Global.statusLevelNetwork >= 3:
+		$levelOption/Network3/BlackHole9.modulate = Color(100, 100, 100)
+		$levelOption/line/LineNetwork3.modulate = Color(100, 100, 100)
+	
+	if Global.statusLevelProgram >= 1:
+		$levelOption/Program1/BlackHole10.modulate = Color(100, 100, 100)
+		$levelOption/line/LineProgram1.modulate = Color(100, 100, 100)
+	if Global.statusLevelProgram >= 2:
+		$levelOption/Program2/BlackHole11.modulate = Color(100, 100, 100)
+		$levelOption/line/LineProgram2.modulate = Color(100, 100, 100)
+	if Global.statusLevelProgram >= 3:
+		$levelOption/Program3/BlackHole12.modulate = Color(100, 100, 100)
+		$levelOption/line/LineProgram3.modulate = Color(100, 100, 100)
+	
+	if Global.statusLevelDesign >= 1:
+		$levelOption/Design1/BlackHole3.modulate = Color(100, 100, 100)
+		$levelOption/line/LineDesign1.modulate = Color(100, 100, 100)
+	if Global.statusLevelDesign >= 2:
+		$levelOption/Design2/BlackHole4.modulate = Color(100, 100, 100)
+		$levelOption/line/LineDesign2.modulate = Color(100, 100, 100)
+	if Global.statusLevelDesign >= 3:
+		$levelOption/Design3/BlackHole6.modulate = Color(100, 100, 100)
+		$levelOption/line/LineDesign3.modulate = Color(100, 100, 100)
+		
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	updateVisualLevel()
 	$bgmMainGame.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

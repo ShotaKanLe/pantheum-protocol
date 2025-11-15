@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://6lgwj1ae6ejk"]
+[gd_scene load_steps=12 format=3 uid="uid://6lgwj1ae6ejk"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
 [ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
+[ext_resource type="Texture2D" uid="uid://bqglh0lphrdj3" path="res://Assets/Others/portal.png" id="3_rpj8j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkurh"]
 atlas = ExtResource("1_d05sh")
@@ -67,9 +68,15 @@ collision_mask = 2
 script = ExtResource("1_ysx7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_a8mhh")
 animation = &"inactive"
 autoplay = "inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ylx0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.84217e-14, 1.42109e-14)
+scale = Vector2(0.062887, 0.062887)
+texture = ExtResource("3_rpj8j")

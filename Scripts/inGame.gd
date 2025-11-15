@@ -123,22 +123,32 @@ func _on_countdown_finished():
 	get_tree().reload_current_scene()
 	# Example: reset energy, spawn portal, etc
 
-const tileSize = 32
-const startingPoint = Vector2(-120, -100)
-var gridSize = Vector2i(6, 6)
+const tileSize = 33
+const startingPoint = Vector2(-200, -110)
+var gridSize = Global.GRID_SIZE
+
+#var tileArray = [
+	#[null, null, 'broken', 'fragile', null, null],
+	#[null, {type="bee", path=[Vector2(0, 1),Vector2(0, 1),Vector2(0,1),Vector2(1,0),Vector2(1,0), Vector2(-1,0),Vector2(-1,0), Vector2(0,-1), Vector2(0,-1), Vector2(0,-1)] }, null, null, 'energy', null],
+	#['fragile', null, 'movingBlock', 'escalator', null, 'portal'],
+	#[{type="button", mech="portal"}, 'portal', 'energy', 'escalator', null, 'vault'],
+	#[null, null, null, null, 'fragile', null],
+	#['energy', null, {type="pressure", mech="escalator"}, 'fragile', 'hidden', 'energy']
+#]
 
 var tileArray = [
-	[null, null, 'broken', 'fragile', null, null],
-	[null, {type="bee", path=[Vector2(0, 1),Vector2(0, 1),Vector2(0,1),Vector2(1,0),Vector2(1,0), Vector2(-1,0),Vector2(-1,0), Vector2(0,-1), Vector2(0,-1), Vector2(0,-1)] }, null, null, 'energy', null],
-	['fragile', null, 'movingBlock', 'escalator', null, 'portal'],
-	[{type="button", mech="portal"}, 'portal', 'energy', 'escalator', null, 'vault'],
-	[null, null, null, null, 'fragile', null],
-	['energy', null, {type="pressure", mech="escalator"}, 'fragile', 'hidden', 'energy']
+	[null, null, null, null, null, null, null, null],
+	['fragile', null, null, null, null, null, null, null],
+	[null, null, null, null, null, {type="portal", pair=Vector2(0,3), startActive = true}, null, null],
+	[null, null, 'portal', null, null, null, null, null],
+	[null, null, null, null, null, null, null, null],
+	[null, null, null, null, null, null, null, null],
+	['fragile', null, null, null, null, null, null, null],
 ]
 
 func _ready():
 	$inGame.play()
-	setAvatar('dyland')
+	setAvatar(Global.activeCharacter)
 	setBoard()
 	setPlayerPosition(getTileInformation(Vector2(1,0)))
 	add_to_group("GameController")
@@ -230,13 +240,13 @@ func spawnTiles():
 func set_object_position(obj, x, y):
 	var tile = getTileInformation(Vector2(x,y))
 
-	var offset_y = 4  # default offset
+	var offset_y = 0  # default offset
 
 	# jika tile di row paling bawah → naik 10px
-	if y == gridSize.y - 1:
-		offset_y -= 6   # contoh: 4 - 10 = -6
+	#if y == gridSize.y - 1:
+		#offset_y -= 6   # contoh: 4 - 10 = -6
 
-	obj.position = Vector2(tile.position.x, tile.position.y + offset_y)
+	obj.position = Vector2(tile.position.x-1.2, tile.position.y + offset_y)
 
 func get_other_portal(x,y):
 	for i in gridSize.x:
@@ -328,9 +338,9 @@ func push_block(from: Vector2i, to: Vector2i):
 			# ---------------------------
 			# APPLY SAME OFFSET LOGIC HERE
 			# ---------------------------
-			var offset_y := 4
+			var offset_y := 0
 			if to.y == gridSize.y - 1:
-				offset_y -= 6   # sama seperti set_object_position()
+				offset_y = 0   # sama seperti set_object_position()
 
 			tile.global_position = Vector2(
 				tile_info.position.x,
@@ -356,12 +366,13 @@ func setPlayerPosition(tile):
 	var x = tile.identityNumber.x
 	var y = tile.identityNumber.y
 
-	var offset_y = 4
+	var offset_y = 1
+	#x -= 3
 
-	if y == gridSize.y - 1:
-		offset_y -= 6
+	#if y == gridSize.y - 1:
+		#offset_y -= 6
 	print(tile.position.y)
-	$char.position = Vector2(tile.position.x, tile.position.y + offset_y)
+	$char.position = Vector2(tile.position.x-1, tile.position.y + offset_y)
 
 
 func getTileInformation(pos: Vector2):
@@ -389,16 +400,12 @@ func setBoard():
 	var maxIndex = 100
 	for x in gridSize.x:
 		for y in gridSize.y:
-			var sprite = "basicFaceForward"
-			if y == 0:
-				sprite = "basicFaceDown"
-			elif y == gridSize.y-1:
-				sprite = "basicFaceUp"
+			var sprite = "defaultMid"
 
 			var monitor = monitorScene.instantiate()
 			monitor.spriteName = sprite
 			monitor.identityNumber = Vector2(x,y)
-			monitor.position = startingPoint + Vector2(tileSize*x, tileSize*y)
+			monitor.position = startingPoint + Vector2(tileSize*x+30, tileSize*y)
 			monitor.z_index = maxIndex
 			$TileManager.add_child(monitor)
 

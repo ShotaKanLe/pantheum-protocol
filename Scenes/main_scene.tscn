@@ -104,6 +104,7 @@ offset_bottom = 498.0
 text = "Exit"
 
 [node name="levelOption" type="Node2D" parent="."]
+visible = false
 position = Vector2(60, -111)
 
 [node name="line" type="Node2D" parent="levelOption"]

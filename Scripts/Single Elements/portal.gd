@@ -9,6 +9,7 @@ class_name Portal
 
 var active = false
 func _ready():
+	z_index = 400
 	connect("body_entered", Callable(self, "_on_enter"))
 
 func _on_enter(body):
