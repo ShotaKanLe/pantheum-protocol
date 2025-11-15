@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://brpp6nxlbc24d"]
+
+[ext_resource type="Script" path="res://Scripts/Single Elements/fragile.gd" id="1_2xk8t"]
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_s5yc3"]
+[ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="2_nihjv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6rc7"]
+atlas = ExtResource("2_nihjv")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp250"]
+atlas = ExtResource("2_nihjv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3txqb"]
+atlas = ExtResource("2_nihjv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6wd"]
+atlas = ExtResource("1_s5yc3")
+region = Rect2(20, 16, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4moru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6rc7")
+}],
+"loop": true,
+"name": &"broken_bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp250")
+}],
+"loop": true,
+"name": &"broken_mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3txqb")
+}],
+"loop": true,
+"name": &"broken_top",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6wd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cf0r"]
+size = Vector2(16, 10.5)
+
+[node name="FragileTile" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_2xk8t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 390
+sprite_frames = SubResource("SpriteFrames_4moru")
+animation = &"broken_bottom"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7cf0r")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://ylj8epj2cbed"]
+
+[ext_resource type="Script" path="res://Scripts/Single Elements/hidden.gd" id="1_3exke"]
+[ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="1_5s8qb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm26j"]
+atlas = ExtResource("1_5s8qb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aidd"]
+atlas = ExtResource("1_5s8qb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7i0c"]
+atlas = ExtResource("1_5s8qb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw31c"]
+atlas = ExtResource("1_5s8qb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udny2"]
+atlas = ExtResource("1_5s8qb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsmqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm26j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aidd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7i0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udny2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0xyk"]
+size = Vector2(26, 25)
+
+[node name="hidden" type="Area2D"]
+z_index = 400
+collision_mask = 2
+script = ExtResource("1_3exke")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nsmqv")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_x0xyk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

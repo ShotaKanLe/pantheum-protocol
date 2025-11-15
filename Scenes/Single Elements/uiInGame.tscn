@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwji8211fu0fa"]
+
+[ext_resource type="Texture2D" uid="uid://dqjtmy7txwjes" path="res://Assets/inGameUI.png" id="1_b7u0t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -267.0
+offset_top = -150.0
+offset_right = 267.0
+offset_bottom = 150.0
+
+[node name="InGameUi" type="Sprite2D" parent="."]
+position = Vector2(267.372, 150.625)
+scale = Vector2(6.66485, 6.63889)
+texture = ExtResource("1_b7u0t")
