@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8w0lb8w3vb38"]
+
+[ext_resource type="Script" path="res://Scripts/Single Elements/monitor.gd" id="1_26y2h"]
+[ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="1_bflfg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6gdn"]
+atlas = ExtResource("1_bflfg")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ioqj"]
+atlas = ExtResource("1_bflfg")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfsej"]
+atlas = ExtResource("1_bflfg")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqroq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6gdn")
+}],
+"loop": true,
+"name": &"broken_bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ioqj")
+}],
+"loop": true,
+"name": &"broken_mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfsej")
+}],
+"loop": true,
+"name": &"broken_top",
+"speed": 5.0
+}]
+
+[node name="Monitor" type="Node2D"]
+z_index = -3
+script = ExtResource("1_26y2h")
+spriteName = "basicFaceDown"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bflfg")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_lqroq")
+animation = &"broken_bottom"

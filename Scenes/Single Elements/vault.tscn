@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca8c2iwrb8m4x"]
+
+[ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="1_0c16m"]
+[ext_resource type="Script" path="res://Scripts/Single Elements/vault.gd" id="1_ra0co"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpo42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au2ye"]
+atlas = ExtResource("1_0c16m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkt2n"]
+atlas = ExtResource("1_0c16m")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q11fk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au2ye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkt2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="vault" type="Area2D"]
+z_index = 400
+collision_mask = 3
+script = ExtResource("1_ra0co")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 400
+shape = SubResource("RectangleShape2D_bpo42")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 600
+sprite_frames = SubResource("SpriteFrames_q11fk")
+autoplay = "default"
+frame_progress = 0.183285
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

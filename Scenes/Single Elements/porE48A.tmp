@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7bcthejw678k"]
+
+[ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
+[ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkurh"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(0, 32, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe0om"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(0, 32, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1us7m"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(20, 32, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmosc"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(40, 32, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk4wj"]
+atlas = ExtResource("1_d05sh")
+region = Rect2(60, 32, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8mhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkurh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe0om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1us7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmosc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk4wj")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylx0y"]
+size = Vector2(16, 10)
+
+[node name="Portal" type="Area2D"]
+z_index = 390
+collision_mask = 2
+script = ExtResource("1_ysx7c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a8mhh")
+animation = &"portal"
+autoplay = "portal"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ylx0y")

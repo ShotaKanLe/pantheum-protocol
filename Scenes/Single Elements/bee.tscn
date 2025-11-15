@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3g06tqld0wwa"]
+
+[ext_resource type="Script" path="res://Scripts/Single Elements/area_2d.gd" id="1_a001s"]
+[ext_resource type="Texture2D" uid="uid://glrqm8gh368g" path="res://Assets/Sprite/bee.png" id="2_28fs7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu3la"]
+size = Vector2(17, 15)
+
+[node name="bee" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_a001s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.0636364, 0.0636364)
+texture = ExtResource("2_28fs7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("RectangleShape2D_bu3la")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
