@@ -9,6 +9,7 @@ var statusLevelDesign = 0
 var statusLevelProgram = 0
 var statusLevelNetwork = 0
 var statusLevelTutorial = 0
+var energy = 0
 
 var isProlog = true
 var isEpilog = true

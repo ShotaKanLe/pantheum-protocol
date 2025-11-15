@@ -3,6 +3,7 @@ class_name Portal
 
 @export var identityNumber: Vector2
 @export var target_position: Vector2
+@export var startActive := false
 var active := false
 @onready var game = get_tree().get_first_node_in_group("GameController")
 @onready var sprite = $AnimatedSprite2D
