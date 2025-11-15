@@ -1,0 +1,409 @@
+[gd_scene load_steps=10 format=3 uid="uid://by1esxxf8ywan"]
+
+[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_0a3l7"]
+[ext_resource type="Texture2D" uid="uid://bn6fagd6gs5yx" path="res://Assets/mainBg.jpg" id="1_vuaaj"]
+[ext_resource type="Texture2D" uid="uid://deq03fhcthfpq" path="res://Assets/Assets/particle.png" id="3_xh5oa"]
+[ext_resource type="Texture2D" uid="uid://3jdyb3tcm4es" path="res://Assets/GUI/button.png" id="4_2454q"]
+[ext_resource type="PackedScene" uid="uid://c3j05nivq27og" path="res://Scenes/Single Elements/label.tscn" id="5_gjg4a"]
+[ext_resource type="Texture2D" uid="uid://bmmraicv0mqnr" path="res://Assets/GUI/blackHole.png" id="6_y2jsh"]
+[ext_resource type="AudioStream" uid="uid://eu3thb34x53a" path="res://Assets/Music/mainGame.wav" id="7_5rtxg"]
+[ext_resource type="AudioStream" uid="uid://cgwmf0t734alu" path="res://Assets/Music/Sfx/select.wav" id="8_wka7x"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rle6x"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 300, 1)
+gravity = Vector3(300, -400, 300)
+damping_max = 13.593
+scale_min = 0.0
+scale_max = 0.2
+color = Color(0.207867, 0, 0.00912904, 1)
+hue_variation_max = 0.12
+
+[node name="mainScene" type="Node2D"]
+script = ExtResource("1_0a3l7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(801, 417)
+scale = Vector2(1.15398, 1.15398)
+texture = ExtResource("1_vuaaj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(832, 524)
+amount = 1000
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_rle6x")
+texture = ExtResource("3_xh5oa")
+
+[node name="startButton" type="Node2D" parent="."]
+position = Vector2(-400, -328)
+scale = Vector2(1.7, 1.7)
+
+[node name="Button3" type="Button" parent="startButton"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 481.0
+offset_top = 400.0
+offset_right = 818.0
+offset_bottom = 519.0
+
+[node name="Button2" type="Sprite2D" parent="startButton"]
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(648, 451)
+scale = Vector2(0.372849, 0.380055)
+texture = ExtResource("4_2454q")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Button" type="Sprite2D" parent="startButton"]
+modulate = Color(0.374023, 0.09664, 0.0961861, 1)
+position = Vector2(647, 451)
+scale = Vector2(0.330019, 0.336397)
+texture = ExtResource("4_2454q")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Label" parent="startButton" instance=ExtResource("5_gjg4a")]
+offset_left = 545.0
+offset_top = 393.0
+offset_right = 748.0
+offset_bottom = 498.0
+text = "Start"
+
+[node name="exitButton" type="Node2D" parent="."]
+position = Vector2(713, 333)
+
+[node name="exitButton" type="Button" parent="exitButton"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 632.0
+offset_top = 397.0
+offset_right = 835.0
+offset_bottom = 509.0
+
+[node name="Button2" type="Sprite2D" parent="exitButton"]
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(732.398, 451)
+scale = Vector2(0.222139, 0.380055)
+texture = ExtResource("4_2454q")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Button" type="Sprite2D" parent="exitButton"]
+modulate = Color(0.374023, 0.09664, 0.0961861, 1)
+position = Vector2(734, 450)
+scale = Vector2(0.216795, 0.336397)
+texture = ExtResource("4_2454q")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Label" parent="exitButton" instance=ExtResource("5_gjg4a")]
+offset_left = 651.0
+offset_top = 393.0
+offset_right = 854.0
+offset_bottom = 498.0
+text = "Exit"
+
+[node name="levelOption" type="Node2D" parent="."]
+visible = false
+position = Vector2(60, -111)
+
+[node name="line" type="Node2D" parent="levelOption"]
+
+[node name="Line1" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(1149.48, 271.67)
+rotation = 1.23296
+scale = Vector2(0.959234, 5.1781)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="Line2" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(912.575, 361.256)
+rotation = 1.20197
+scale = Vector2(0.909228, 7.03203)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineProgram1" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(609, 438)
+rotation = 1.45889
+scale = Vector2(0.909228, 7.03203)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineProgram2" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(364, 518)
+rotation = 1.0177
+scale = Vector2(0.909228, 5.76169)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineProgram3" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(400.867, 652.673)
+rotation = 2.04239
+scale = Vector2(0.909228, 7.46911)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineNetwork1" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(861, 335)
+rotation = 0.954369
+scale = Vector2(0.909228, 5.68326)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineNetwork2" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(834, 244)
+rotation = 1.69929
+scale = Vector2(0.909228, 5.68326)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineNetwork3" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(561.404, 241.381)
+rotation = 1.46074
+scale = Vector2(0.909228, 7.14906)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineDesign1" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(920.03, 509.712)
+rotation = -1.0797
+scale = Vector2(0.909228, 8.11368)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineDesign2" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(972, 636)
+rotation = -1.89891
+scale = Vector2(0.909228, 5.21987)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="LineDesign3" type="Sprite2D" parent="levelOption/line"]
+position = Vector2(783, 797)
+rotation = 0.62765
+scale = Vector2(0.909228, 7.06743)
+texture = ExtResource("1_vuaaj")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)
+
+[node name="Tutorial1" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole" type="Sprite2D" parent="levelOption/Tutorial1"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1271, 137)
+texture = ExtResource("6_y2jsh")
+
+[node name="Tutorial1" type="Button" parent="levelOption/Tutorial1"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1248.0
+offset_top = 114.0
+offset_right = 1295.0
+offset_bottom = 159.0
+
+[node name="Tutorial2" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole2" type="Sprite2D" parent="levelOption/Tutorial2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1112, 195)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Tutorial2" type="Button" parent="levelOption/Tutorial2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1097.0
+offset_top = 181.0
+offset_right = 1125.0
+offset_bottom = 209.0
+
+[node name="Prolog" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole5" type="Sprite2D" parent="levelOption/Prolog"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(825, 307)
+texture = ExtResource("6_y2jsh")
+
+[node name="Prolog" type="Button" parent="levelOption/Prolog"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 799.0
+offset_top = 288.0
+offset_right = 846.0
+offset_bottom = 333.0
+
+[node name="Network1" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole7" type="Sprite2D" parent="levelOption/Network1"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1014, 156)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Network1" type="Button" parent="levelOption/Network1"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1000.0
+offset_top = 141.0
+offset_right = 1026.0
+offset_bottom = 170.0
+
+[node name="Network2" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole8" type="Sprite2D" parent="levelOption/Network2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(777, 115)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Network2" type="Button" parent="levelOption/Network2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 766.0
+offset_top = 101.0
+offset_right = 791.0
+offset_bottom = 127.0
+
+[node name="Network3" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole9" type="Sprite2D" parent="levelOption/Network3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(471, 147)
+texture = ExtResource("6_y2jsh")
+
+[node name="Network3" type="Button" parent="levelOption/Network3"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 493.0
+offset_bottom = 169.0
+
+[node name="Design1" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole3" type="Sprite2D" parent="levelOption/Design1"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1139, 483)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Design1" type="Button" parent="levelOption/Design1"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1125.0
+offset_top = 469.0
+offset_right = 1156.0
+offset_bottom = 499.0
+
+[node name="Design2" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole4" type="Sprite2D" parent="levelOption/Design2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(933, 560)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Design2" type="Button" parent="levelOption/Design2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 921.0
+offset_top = 545.0
+offset_right = 946.0
+offset_bottom = 574.0
+
+[node name="Design3" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole6" type="Sprite2D" parent="levelOption/Design3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(755, 808)
+scale = Vector2(1.15398, 1.15398)
+texture = ExtResource("6_y2jsh")
+
+[node name="Design3" type="Button" parent="levelOption/Design3"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 732.0
+offset_top = 786.0
+offset_right = 779.0
+offset_bottom = 831.0
+
+[node name="Program1" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole10" type="Sprite2D" parent="levelOption/Program1"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(527, 342)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Program1" type="Button" parent="levelOption/Program1"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 514.0
+offset_top = 328.0
+offset_right = 538.0
+offset_bottom = 353.0
+
+[node name="Program2" type="Node2D" parent="levelOption"]
+position = Vector2(-60, 111)
+
+[node name="BlackHole11" type="Sprite2D" parent="levelOption/Program2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(321, 468)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("6_y2jsh")
+
+[node name="Program2" type="Button" parent="levelOption/Program2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 307.0
+offset_top = 454.0
+offset_right = 334.0
+offset_bottom = 481.0
+
+[node name="Program3" type="Node2D" parent="levelOption"]
+modulate = Color(0.947199, 0.947199, 0.947199, 1)
+position = Vector2(-60, 111)
+
+[node name="BlackHole12" type="Sprite2D" parent="levelOption/Program3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(599, 612)
+scale = Vector2(1.15398, 1.15398)
+texture = ExtResource("6_y2jsh")
+
+[node name="Program3" type="Button" parent="levelOption/Program3"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 575.0
+offset_top = 590.0
+offset_right = 622.0
+offset_bottom = 635.0
+
+[node name="bgmMainGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5rtxg")
+
+[node name="buttonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_wka7x")
+
+[connection signal="pressed" from="startButton/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="exitButton/exitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="levelOption/Tutorial1/Tutorial1" to="." method="_on_tutorial_1_pressed"]
+[connection signal="pressed" from="levelOption/Tutorial2/Tutorial2" to="." method="_on_tutorial_2_pressed"]
+[connection signal="pressed" from="levelOption/Prolog/Prolog" to="." method="_on_prolog_pressed"]
+[connection signal="pressed" from="levelOption/Network1/Network1" to="." method="_on_network_1_pressed"]
+[connection signal="pressed" from="levelOption/Network2/Network2" to="." method="_on_network_2_pressed"]
+[connection signal="pressed" from="levelOption/Network3/Network3" to="." method="_on_network_3_pressed"]
+[connection signal="pressed" from="levelOption/Design1/Design1" to="." method="_on_design_1_pressed"]
+[connection signal="pressed" from="levelOption/Design2/Design2" to="." method="_on_design_2_pressed"]
+[connection signal="pressed" from="levelOption/Design3/Design3" to="." method="_on_design_3_pressed"]
+[connection signal="pressed" from="levelOption/Program1/Program1" to="." method="_on_program_1_pressed"]
+[connection signal="pressed" from="levelOption/Program2/Program2" to="." method="_on_program_2_pressed"]
+[connection signal="pressed" from="levelOption/Program3/Program3" to="." method="_on_program_3_pressed"]

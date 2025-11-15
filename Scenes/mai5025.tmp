@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://by1esxxf8ywan"]
+
+[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_0a3l7"]
+[ext_resource type="Texture2D" uid="uid://bn6fagd6gs5yx" path="res://Assets/mainBg.jpg" id="1_vuaaj"]
+[ext_resource type="Texture2D" uid="uid://deq03fhcthfpq" path="res://Assets/Assets/particle.png" id="3_xh5oa"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rle6x"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 300, 1)
+gravity = Vector3(300, -400, 300)
+damping_max = 13.593
+scale_min = 0.0
+scale_max = 0.2
+color = Color(0.207867, 0, 0.00912904, 1)
+hue_variation_max = 0.12
+
+[node name="mainScene" type="Node2D"]
+script = ExtResource("1_0a3l7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(801, 417)
+scale = Vector2(1.15398, 1.15398)
+texture = ExtResource("1_vuaaj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(832, 524)
+amount = 1000
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_rle6x")
+texture = ExtResource("3_xh5oa")

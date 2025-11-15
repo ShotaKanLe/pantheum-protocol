@@ -16,7 +16,67 @@ var tileArray = [[
 
 var tileInformation = []
 
+const abigail = "res://Assets/Head/Abigail.png"
+const atlas = "res://Assets/Head/Atlas.png"
+const clorina = "res://Assets/Head/Clorina.png"
+const darkCyber = "res://Assets/Head/DarkCyber.png"
+const dyland = "res://Assets/Head/Dyland.png"
+const innera = "res://Assets/Head/Innera.png"
+const lyna = "res://Assets/Head/Lyna.png"
+const nefa = "res://Assets/Head/Nefa.png"
+const vanir = "res://Assets/Head/Vanir.png"
+const venrir = "res://Assets/Head/Venrir.png"
+const xein = "res://Assets/Head/Xein.png"
+
+var characterPlayed = 'clorina'
+
+func playAs(char):
+	pass
+	
+func setAvatar(name):
+	var forName
+	
+	if name == 'abigail':
+		forName = 'Abigail'
+		name = abigail
+	elif name == 'atlas':
+		forName = 'Atlas'
+		name = atlas
+	elif name == 'clorina':
+		forName = 'Clorina'
+		name = clorina
+	elif name == '???':
+		forName = '???'
+		name = darkCyber
+	elif name == 'dyland': 
+		forName = 'Dyland'
+		name = dyland
+	elif name == 'innera':
+		forName = 'Innera'
+		name = innera
+	elif name == 'lyna':
+		forName = 'Lyna'
+		name = lyna
+	elif name == 'nefa':
+		forName = 'Nefa'
+		name = nefa
+	elif name == 'vanir':
+		forName = 'Vanir'
+		name = vanir
+	elif name == 'venrir':
+		forName = 'Venrir'
+		name =venrir
+	elif name == 'xein':
+		forName = 'Xein'
+		name = xein
+		
+	$startButton/Node2D/Label.text = forName
+	$Node2D/avatarChar.texture = load (name)
+	$Node2D/avatarCharShadow.texture = load (name)
+	
 func _ready():
+	$inGame.play()
+	setAvatar('dyland')
 	setBoard()
 	setBoardObject()
 	setTileInformation()
@@ -95,3 +155,8 @@ func setBoard():
 				setMonitor('basicFaceUp', startingPoint.x+(tileSize*x), startingPoint.y+(tileSize*y), maxIndex, Vector2(x,y))
 			else:
 				setMonitor('basicFaceForward', startingPoint.x+(tileSize*x), startingPoint.y+(tileSize*y), maxIndex, Vector2(x,y))
+
+func _on_button_3_pressed():
+	$buttonClick.play()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')

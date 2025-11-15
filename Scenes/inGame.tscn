@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjmqexmooo4fh"]
+[gd_scene load_steps=13 format=3 uid="uid://bjmqexmooo4fh"]
 
 [ext_resource type="Script" path="res://Scripts/inGame.gd" id="1_1g8xj"]
 [ext_resource type="PackedScene" uid="uid://oygk6nwavp0l" path="res://Scenes/char.tscn" id="2_v1ywf"]
 [ext_resource type="PackedScene" uid="uid://bwji8211fu0fa" path="res://Scenes/Single Elements/uiInGame.tscn" id="3_ibrxw"]
+[ext_resource type="Texture2D" uid="uid://cdjhaeeeke818" path="res://Assets/GUI/inGameUI.png" id="4_bd65d"]
+[ext_resource type="Texture2D" uid="uid://deq03fhcthfpq" path="res://Assets/Assets/particle.png" id="4_roswx"]
+[ext_resource type="Texture2D" uid="uid://bn6fagd6gs5yx" path="res://Assets/mainBg.jpg" id="5_h16qm"]
+[ext_resource type="Texture2D" uid="uid://b0hr1ogufakwg" path="res://Assets/Head/Abigail.png" id="6_s6bqv"]
+[ext_resource type="Texture2D" uid="uid://3jdyb3tcm4es" path="res://Assets/GUI/button.png" id="7_ohfeu"]
+[ext_resource type="PackedScene" uid="uid://c3j05nivq27og" path="res://Scenes/Single Elements/label.tscn" id="8_tno52"]
+[ext_resource type="AudioStream" uid="uid://cgwmf0t734alu" path="res://Assets/Music/Sfx/select.wav" id="9_0nfkv"]
+[ext_resource type="AudioStream" uid="uid://dgh7t2q6eobfv" path="res://Assets/Music/inGame.wav" id="10_jejlm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_abgyr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 300, 1)
+gravity = Vector3(300, -400, 300)
+damping_max = 13.593
+scale_min = 0.0
+scale_max = 0.2
+color = Color(0.207867, 0, 0.00912904, 1)
+hue_variation_max = 0.12
 
 [node name="inGame" type="Node2D"]
 script = ExtResource("1_1g8xj")
@@ -19,3 +38,109 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-0.999999, -37)
+scale = Vector2(0.434606, 0.434606)
+texture = ExtResource("5_h16qm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+position = Vector2(4, 73)
+amount = 200
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_abgyr")
+texture = ExtResource("4_roswx")
+
+[node name="InGameUi" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.529412, 0.0980392, 0.172549, 0.807843)
+position = Vector2(-3, 1)
+scale = Vector2(0.286574, 0.286574)
+texture = ExtResource("4_bd65d")
+
+[node name="avatarCharShadow" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 0.233333, 0, 0.372549)
+position = Vector2(214, 29)
+scale = Vector2(0.176042, 0.176302)
+texture = ExtResource("6_s6bqv")
+
+[node name="avatarChar" type="Sprite2D" parent="Node2D"]
+position = Vector2(214, 42)
+scale = Vector2(0.155429, 0.155658)
+texture = ExtResource("6_s6bqv")
+
+[node name="startButton" type="Node2D" parent="."]
+position = Vector2(19, -26)
+scale = Vector2(0.3, 0.3)
+
+[node name="Button2" type="Sprite2D" parent="startButton"]
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(648, 451)
+scale = Vector2(0.372849, 0.380055)
+texture = ExtResource("7_ohfeu")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Button" type="Sprite2D" parent="startButton"]
+modulate = Color(0.374023, 0.09664, 0.0961861, 1)
+position = Vector2(647, 451)
+scale = Vector2(0.330019, 0.336397)
+texture = ExtResource("7_ohfeu")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Node2D" type="Node2D" parent="startButton"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Label" parent="startButton/Node2D" instance=ExtResource("8_tno52")]
+offset_left = 670.833
+offset_top = 508.333
+offset_right = 950.833
+offset_bottom = 613.333
+text = "Abigail"
+
+[node name="exitButton" type="Node2D" parent="."]
+position = Vector2(25, -272)
+scale = Vector2(0.3, 0.3)
+
+[node name="Button2" type="Sprite2D" parent="exitButton"]
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(733.333, 462.188)
+scale = Vector2(0.142857, 0.338925)
+texture = ExtResource("7_ohfeu")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Button" type="Sprite2D" parent="exitButton"]
+modulate = Color(0.374023, 0.09664, 0.0961861, 1)
+position = Vector2(731.667, 461.25)
+scale = Vector2(0.110119, 0.298713)
+texture = ExtResource("7_ohfeu")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Node2D" type="Node2D" parent="exitButton"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Label" parent="exitButton/Node2D" instance=ExtResource("8_tno52")]
+offset_left = 887.0
+offset_top = 508.0
+offset_right = 950.0
+offset_bottom = 613.0
+text = "x"
+
+[node name="Button3" type="Button" parent="exitButton/Node2D"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 833.0
+offset_top = 521.0
+offset_right = 996.0
+offset_bottom = 658.0
+
+[node name="buttonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0nfkv")
+
+[node name="inGame" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_jejlm")
+
+[connection signal="pressed" from="exitButton/Node2D/Button3" to="." method="_on_button_3_pressed"]

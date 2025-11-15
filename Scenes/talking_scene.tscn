@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://du4lqdoj0lde2"]
+
+[ext_resource type="Script" path="res://Scripts/talking_scene.gd" id="1_afm2y"]
+[ext_resource type="Resource" uid="uid://ce8xbvt4g0r5g" path="res://Dialogues/mainDialog.dialogue" id="2_quis0"]
+[ext_resource type="Texture2D" uid="uid://bn6fagd6gs5yx" path="res://Assets/mainBg.jpg" id="3_3kybr"]
+[ext_resource type="Texture2D" uid="uid://b0hr1ogufakwg" path="res://Assets/Head/Abigail.png" id="3_frw7g"]
+[ext_resource type="Texture2D" uid="uid://deq03fhcthfpq" path="res://Assets/Assets/particle.png" id="4_g01cp"]
+[ext_resource type="AudioStream" uid="uid://bptrw4qs3ytm7" path="res://Assets/Music/prolog.wav" id="6_qaccc"]
+[ext_resource type="AudioStream" uid="uid://eu3thb34x53a" path="res://Assets/Music/mainGame.wav" id="7_k5j1r"]
+[ext_resource type="AudioStream" uid="uid://cp30fo2ragur4" path="res://Assets/Music/epilog.wav" id="8_pb42f"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fg4wj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 300, 1)
+gravity = Vector3(300, -400, 300)
+damping_max = 13.593
+scale_min = 0.0
+scale_max = 0.2
+color = Color(0.207867, 0, 0.00912904, 1)
+hue_variation_max = 0.12
+
+[node name="talkingScene" type="Node2D"]
+script = ExtResource("1_afm2y")
+dialogue_resource = ExtResource("2_quis0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(801, 417)
+scale = Vector2(1.15398, 1.15398)
+texture = ExtResource("3_3kybr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(832, 524)
+amount = 1000
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_fg4wj")
+texture = ExtResource("4_g01cp")
+
+[node name="charRight" type="Sprite2D" parent="."]
+position = Vector2(1213, 456)
+scale = Vector2(0.565256, 0.566091)
+texture = ExtResource("3_frw7g")
+
+[node name="charLeft" type="Sprite2D" parent="."]
+position = Vector2(397, 455)
+scale = Vector2(0.558638, 0.559463)
+texture = ExtResource("3_frw7g")
+flip_h = true
+
+[node name="bgmProlog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qaccc")
+
+[node name="bgmMainGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k5j1r")
+
+[node name="bgmEpilog" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pb42f")
+
+[node name="Line1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.180392)
+position = Vector2(841.612, 420.918)
+rotation = 1.57085
+scale = Vector2(128.437, 42.0419)
+texture = ExtResource("3_3kybr")
+region_enabled = true
+region_rect = Rect2(1135, 231, 8, 42)

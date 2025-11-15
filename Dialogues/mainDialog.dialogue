@@ -1,0 +1,301 @@
+~ realprolog
+
+set State.onConversation = true
+Prolog : Di masa depan, berdirilah sebuah kota bernama Pantheum sebuah dunia yang hidup bukan oleh darah dan daging, melainkan oleh data dan cahaya.
+Prolog : Setiap langkah penduduknya, setiap gerak mesin, dan setiap denyut energi dikendalikan oleh satu pusat ingatan: The Vault of Memory, jantung digital paling rumit yang pernah diciptakan manusia.
+Prolog : Vault ini bukan hanya mesin. Ia adalah nadi kehidupan. Ia mengatur lalu lintas, menjaga keamanan, menyuplai energi, bahkan menyimpan memori seluruh peradaban Pantheum dalam rangkaian blockchain yang tak terputus
+Prolog : Untuk menjaga keseimbangannya, dibentuklah organisasi Cybertech para penjaga data, peretas kebenaran, dan pengawas setiap alur kode yang mengalir di jaringan kota
+Prolog : Namun pada suatu hari… ritme itu terganggu
+Prolog : Vault- vault yang selalu bersinar stabil tiba-tiba berwarna kusam. Jalur jaringan terputus, perintah logika kacau, dan pola visual berubah menjadi labirin tanpa arah
+Prolog : Tidak lama setelah itu, sebuah sinyal asing muncul… tak dikenal, tak terdaftar, tak berasal dari sistem manapun. Mereka menyebut dirinya Dark-Cyber
+Prolog : Tidak jelas apakah mereka manusia, kecerdasan buatan, atau entitas lain yang berevolusi dari gelapnya jaringan. Tapi satu hal pasti: mereka mulai menggerogoti Vault dari dalam.
+Prolog : Virus mereka merayap cepat, mengacak memori kota, mengkorupsi node, dan menanamkan fragment pesan yang seolah—mengawasi, menilai, menunggu.
+Prolog : Korupsi itu menyebar… dan Pantheum mulai kehilangan ingatannya.
+Prolog : Di sinilah perjalananmu dimulai. Sebagai anggota Cybertech, kau dipanggil bukan hanya untuk memperbaiki sistem—melainkan untuk menelusuri semakin dalam dan menemukan asal dari kegelapan yang membangkitkan diri
+Prolog : Vault akan menjadi medan tempurmu. Data rusak akan menjadi rintanganmu. Dan fragment- fragment tersembunyi akan menjadi petunjuk menuju kebenaran
+Prolog : Namun ingat satu hal…
+Prolog : Ketika kau memulihkan ingatan kota… entitas itu juga mengamatimu.
+Prolog : Dan dalam keheningan jaringan, suara mereka berbisik…
+Prolog : Jika semua vault telah dipulihkan… mengapa sinyal kami masih ada?
+Prolog : Pantheum tidak runtuh hari ini. Tapi di balik batas kota, sebuah kekuatan tengah bangkit… menunggu kesempatan untuk menulis ulang dunia.
+set State.onConversation = false
+do showNoChar()
+do endProlog()
+=> END
+
+~ prolog
+
+set State.onConversation = true
+do showChar('left', 'abigail')
+Abigail : Pagi! Atau… eh… waktu di jaringan suka ngaco. Pokoknya aku Abigail, Cyber-Leader bagian Network. Kita dapat masalah besar
+do showChar('right', 'atlas')
+Atlas : Vault of Memory mulai korup. Tiga sistem utama—Network, Programming, dan Design berkedip kayak lampu kamar kos yang mau putus
+do showChar('left', 'lyna')
+Lyna : Kota bisa kacau total kalau Vault drop. Lalu lintas, energi, data warga… semuanya bisa crash
+do showChar('right', 'xein')
+Xein : Virus ini bukan virus biasa. Mereka memutarbalikkan hash, ngacak jalur, bahkan bikin visual Vault berubah jadi abstrak kacau
+do showChar('left', 'innera')
+Innera : Cybertech butuh seseorang buat masuk ke dalam Vault, memulihkan memori, dan ngambil potongan data aneh yang muncul… mungkin itu jejak Dark-Cyber
+do showChar('right', '???')
+??? : <static> “Kalian terlambat… Vault sudah mulai melupakan.” <static>
+do showChar('left', 'abigail')
+Abigail : Aku… beneran dengar itu? Oke, fokus. Ayo mulai dari Vault Network dulu. Pemanasan!
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ network1
+
+set State.onConversation = true
+do showChar('left', 'abigail')
+Abigail : Oke, kita masuk di Vault Network. Jangan sampai jatuh ke lubang sinyal putus. Itu cuma metafora… atau bukan?
+do showChar('right', 'vanir')
+Vanir  : Lihat, node utamanya overload. Kamu harus nyusun ulang jalur koneksi biar stabil
+do showChar('left', 'xein')
+Xein : Aku pantau dari sini. Kalau ada lonjakan aneh, ya… semoga nggak meledak
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ endnetwork1
+
+set State.onConversation = true
+do showChar('right', '???')
+??? : <noise> “Koneksi… tidak perlu dipulihkan. Biarkan kota ini bungkam…” <noise>
+do showChar('right', 'vanir')
+Vanir : Oke, itu barusan bukan aku. Hati-hati, sinyalnya nyusup sampai ke channel kita
+do showChar('left', 'abigail')
+Abigail : Bagus! Jalur utama kembali normal. Lanjut ke node berikutnya sebelum sinyal gelapnya naik level.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ network2
+
+set State.onConversation = true
+do showChar('left', 'abigail')
+Abigail : Vault ini kacau. Jalurnya muter-muter kayak benang kusut
+do showChar('right', 'nefa')
+Nefa : Aku kirim pattern pemulihan. Kamu tinggal cocokkan… kalau bisa.
+do showChar('left', 'xein')
+Xein : Hati-hati, node ini sensitif. Salah sedikit, Vault bisa ngerestart
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ endnetwork2
+
+set State.onConversation = true
+do showChar('left', '???')
+??? : Kalian berusaha keras… tapi kesunyian akan menang…
+do showChar('right', 'nefa')
+Nefa : Heh, sinyalnya ngintip lagi. Kayak stalker digital.
+do showChar('left', 'abigail')
+Abigail : Koneksi pulih. Satu Vault lagi sebelum kita bisa ambil data fragmen.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ network3
+
+set State.onConversation = true
+do showChar('left', 'abigail')
+Abigail : Ini dia Vault utama jaringan. Defense System-nya udah berubah bentuk.
+do showChar('right', 'vanir')
+Vanir : Mirip firewall hidup. Kamu harus pecahin tiga pola jalur sebelum dia nge-lock semuanya.
+do showChar('left', 'innera')
+Innera : Kita butuh data fragment di dalamnya. Itu mungkin petunjuk Dark-Cyber.
+do showChar('right', '???')
+??? : Kalian membuka pintu-pintu yang harusnya ditinggalkan…
+do showChar('left', 'xein')
+Xein : Sinyalnya makin kuat. Kayaknya Dark ada… dekat sini. Digital-dekat.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ endnetwork3
+
+set State.onConversation = true
+do showChar('right', 'abigail')
+Abigail : Nice! Defense System turun.
+System : <voice distorted> “Pantheum… bukan target pertama…”
+do showChar('right', 'abigail')
+Abigail : Apa maksudnya? Kita bakal cari tahu di Vault berikutnya.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ program1
+
+set State.onConversation = true
+do showChar('left', 'atlas')
+Atlas: Selamat datang di ruang kode. Jangan tersandung bracket nyasar.
+do showChar('right', 'dyland')
+Dyland: Sistem perintahnya terbalik-balik. Kamu harus betulin urutan logikanya.
+do showChar('left', 'clorina')
+Clorina: Hati-hati, setiap baris yang benar bakal munculin perintah baru
+do showChar('right', '???')
+??? : Perintah kota… akan ditulis ulang…
+do showChar('left', 'atlas')
+Atlas: Dia… ngedit kode kita? Ini makin gawat.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ program2
+
+set State.onConversation = true
+do showChar('left', 'atlas')
+Atlas: Vault ini kejebak loop. Kayak tugas kuliah yang nggak kelar-kelar.
+do showChar('right', 'dyland')
+Dyland: Kamu harus potong alur eksekusinya. Cari pivot node-nya
+do showChar('left', 'clorina')
+Clorina: Aku kirim script pemutus loop. Gunain kalau stuck.
+do showChar('right', '???')
+??? : Loop akan berulang… sampai kalian menyerah…
+do showChar('right', 'dyland')
+Dyland: Dia kayak ngerti kita. Atau… dia mantau kita real-time.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ endprogram2
+
+set State.onConversation = true
+do showChar('left', 'atlas')
+Atlas: Dua Vault Programming selesai. Vault inti berikutnya pasti lebih kacau.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ program3
+
+set State.onConversation = true
+do showChar('left', 'atlas')
+Atlas: Ini pusat logika. Defense System-nya udah berubah jadi algoritma agresif.
+do showChar('right', 'dyland')
+Dyland: Kamu harus nyusun ulang kode inti. Jangan panik. Kecuali kalau algoritmanya nyerang… ya panik sedikit nggak apa-apa
+do showChar('left', 'clorina')
+Clorina: Fragmen data ada di node paling dalam.
+do showChar('right', '???')
+??? : Logika tidak penting… kehendak akan menggantikannya…
+do showChar('right', 'dyland')
+Dyland: Apa itu maksudnya? Kehendak siapa?
+do showChar('left', 'atlas')
+Atlas: Core stabil!
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ endprogram3
+
+set State.onConversation = true
+System: <distorted> “Pantheum hanyalah pintu… bukan tujuan.”
+do showChar('left', 'atlas')
+Atlas: Ini mulai bikin merinding.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ design1
+
+set State.onConversation = true
+do showChar('left', 'innera')
+Innera: Selamat datang di vault paling artistik… kalau kamu suka glitch.
+do showChar('right', 'lyna')
+Lyna: Pola-pola ini harus disejajarkan. Vault nggak bisa menampilkan data kalau visualnya rusak
+do showChar('left', 'venrir')
+Venrir: Gerak polanya random, jadi siap-siap main kejar-kejar an bentuk.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ enddesign1
+
+set State.onConversation = true
+do showChar('right', '???')
+??? : Kalian memperbaiki apa yang seharusnya hancur…
+do showChar('left', 'innera')
+Innera: Oke, itu creepy. Lanjut!
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ design2
+
+set State.onConversation = true
+do showChar('left', 'lyna')
+Lyna: Enkripsi Vault berubah jadi labirin. Kamu harus pecahin urutan warnanya.
+do showChar('right', 'venrir')
+Venrir: Aku upload kunci referensi. Cocokkan aja
+do showChar('left', 'innera')
+Innera: Hati-hati, jalannya berubah setiap kali kamu gerak.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ enddesign2
+
+set State.onConversation = true
+do showChar('right', '???')
+??? : Enkripsi… hanyalah ilusi kontrol…
+do showChar('left', 'venrir')
+Venrir: Dia selalu muncul setiap kali kita hampir selesai. Coincidence?
+do showChar('right', 'lyna')
+Lyna: Satu Vault lagi. Dan sinyalnya makin kuat.
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ design3
+
+set State.onConversation = true
+do showChar('left', 'innera')
+Innera: Itu dia. Vault terakhir. Defense System-nya berubah jadi bentuk yang… entahlah apa itu.
+do showChar('right', 'lyna')
+Lyna: Kamu harus selaraskan pola visual tingkat tinggi. Tiga tahap.
+do showChar('left', 'venrir')
+Venrir: Fragmen terakhir ada di pusat visual.
+do showChar('right', '???')
+??? : Kalian membuka memori kota… tapi bukan untuk menyelamatkannya…
+do showChar('left', 'innera')
+Innera: Jadi… buat apa?
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ enddesign3
+
+set State.onConversation = true
+do showChar('left', 'lyna')
+Lyna: Visual stabil!
+System: <data voice> “Dark-Cyber… bukan gangguan. Mereka panggilan… dari luar Pantheum.”
+do showChar('right', 'innera')
+Innera: Jadi… mereka bukan dari kota ini?
+set State.onConversation = false
+do showNoChar()
+=> END
+
+~ epilog
+
+set State.onConversation = true
+do showChar('left', 'abigail')
+Abigail: Semua Vault pulih. Kota kembali stabil. Pantheum… aman.
+do showChar('right', 'atlas')
+Atlas: Tapi fragmen data nggak bohong. Dark-Cyber bukan berasal dari jaringan ini.
+do showChar('left', 'innera')
+Innera: Kalau begitu… siapa mereka?
+do showChar('right', 'xein')
+Xein: Uh… guys? Ada sinyal baru muncul.
+do showChar('left', 'vanir')
+Vanir: Dari luar Pantheum?
+do showChar('right', 'xein')
+Xein: Ya. Dan… ini lebih kuat dari yang sebelumnya.
+do showChar('right', '???')
+??? : <static> “Kalian membuka pintu… sekarang bersiaplah melihat apa yang ada di baliknya.” <static>
+do showChar('left', 'abigail')
+Abigail : Kita selesai… untuk sekarang. Siapkan tim. Kita punya kota lain untuk diselamatkan.
+set State.onConversation = false
+do showNoChar()
+do endEpilog()
+=> END

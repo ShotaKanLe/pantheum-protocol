@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi7lspv7g5rfu"]
+
+[ext_resource type="Texture2D" uid="uid://3jdyb3tcm4es" path="res://Assets/GUI/button.png" id="1_778th"]
+[ext_resource type="PackedScene" uid="uid://c3j05nivq27og" path="res://Scenes/Single Elements/label.tscn" id="2_dm0ja"]
+
+[node name="Button" type="Node2D"]
+
+[node name="Button2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(648, 451)
+scale = Vector2(0.372849, 0.380055)
+texture = ExtResource("1_778th")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Button" type="Sprite2D" parent="."]
+modulate = Color(0.374023, 0.09664, 0.0961861, 1)
+position = Vector2(647, 451)
+scale = Vector2(0.330019, 0.336397)
+texture = ExtResource("1_778th")
+region_enabled = true
+region_rect = Rect2(640, 832, 1120, 544)
+
+[node name="Label" parent="." instance=ExtResource("2_dm0ja")]
+offset_left = 545.0
+offset_top = 393.0
+offset_right = 748.0
+offset_bottom = 498.0
+text = "Start"
