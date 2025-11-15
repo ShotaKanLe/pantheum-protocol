@@ -44,6 +44,8 @@ position_smoothing_enabled = true
 [node name="CountdownContainer" type="Node" parent="."]
 
 [node name="CountDownLabel" type="Label" parent="CountdownContainer"]
+visible = false
+z_index = 401
 offset_right = 40.0
 offset_bottom = 23.0
 text = "10"

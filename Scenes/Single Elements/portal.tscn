@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6lgwj1ae6ejk"]
+[gd_scene load_steps=11 format=3 uid="uid://b7bcthejw678k"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_d05sh"]
 [ext_resource type="Script" path="res://Scripts/Single Elements/portal.gd" id="1_ysx7c"]
