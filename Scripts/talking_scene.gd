@@ -36,11 +36,18 @@ func stopAllMusic():
 func _process(delta):
 	if !State.onConversation:
 		space()
+	if Input.is_action_just_pressed("space"):
+		if State.onConversation:
+			startDialog()
+			await  get_tree().create_timer(1.2).timeout
+			stopDialog()
 
 func space():
 	if Input.is_action_just_pressed("space"):
 		playDialog()
-		pass
+		startDialog()
+		await  get_tree().create_timer(1.2).timeout
+		stopDialog()
 		
 func showNoChar():
 	$charRight.visible = false
@@ -102,4 +109,9 @@ func endProlog():
 func endEpilog():
 	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')
 
-	
+func startDialog():
+	$talking.play()
+
+func stopDialog():
+	$talking.stop()
+

@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck5ajltfsyev0"]
+[gd_scene load_steps=16 format=3 uid="uid://ck5ajltfsyev0"]
 
 [ext_resource type="Script" path="res://Scripts/Single Elements/escalator.gd" id="1_6vhas"]
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="2_r1xhl"]
+[ext_resource type="Texture2D" uid="uid://vixiuab6wx4f" path="res://Assets/Escalator/1 Arrow.png" id="3_r5fj1"]
+[ext_resource type="Texture2D" uid="uid://bdhd2j2fadkns" path="res://Assets/Escalator/2 Arrow.png" id="3_ypn1a"]
+[ext_resource type="Texture2D" uid="uid://dlpubvrp7cclq" path="res://Assets/Escalator/3 Arrow.png" id="5_1xfnw"]
+[ext_resource type="Texture2D" uid="uid://c1oh1jnb3al1w" path="res://Assets/Escalator/4 Arrow.png" id="6_bucti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slyl8"]
 atlas = ExtResource("2_r1xhl")
@@ -54,12 +58,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f8cd"]
 size = Vector2(16, 11)
 
+[sub_resource type="Animation" id="Animation_o8vum"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_r5fj1"), ExtResource("3_ypn1a"), ExtResource("5_1xfnw"), ExtResource("6_bucti")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5h44"]
+_data = {
+"idle": SubResource("Animation_o8vum")
+}
+
 [node name="escalator" type="Area2D"]
 z_index = 400
 collision_mask = 2
 script = ExtResource("1_6vhas")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_shfr6")
 animation = &"on"
 autoplay = "off"
@@ -68,5 +95,15 @@ frame_progress = 0.138545
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_7f8cd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.0636433, 0.0806021)
+texture = ExtResource("6_bucti")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x5h44")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

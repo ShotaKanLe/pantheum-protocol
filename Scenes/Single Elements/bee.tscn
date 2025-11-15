@@ -1,23 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3g06tqld0wwa"]
+[gd_scene load_steps=6 format=3 uid="uid://dm5bgx0oq3qfs"]
 
 [ext_resource type="Script" path="res://Scripts/Single Elements/area_2d.gd" id="1_a001s"]
-[ext_resource type="Texture2D" uid="uid://glrqm8gh368g" path="res://Assets/Sprite/bee.png" id="2_28fs7"]
+[ext_resource type="Texture2D" uid="uid://7vxsb0ylwitl" path="res://Assets/Others/bee.png" id="2_4pi3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu3la"]
 size = Vector2(17, 15)
 
+[sub_resource type="Animation" id="Animation_70ord"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, -2), Vector2(-2, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvfo5"]
+_data = {
+"idle": SubResource("Animation_70ord")
+}
+
 [node name="bee" type="Area2D"]
-z_index = 400
 collision_mask = 2
 script = ExtResource("1_a001s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
-scale = Vector2(0.0636364, 0.0636364)
-texture = ExtResource("2_28fs7")
+position = Vector2(-2, -4)
+scale = Vector2(0.0227456, 0.0227456)
+texture = ExtResource("2_4pi3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -2.5)
 shape = SubResource("RectangleShape2D_bu3la")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cvfo5")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

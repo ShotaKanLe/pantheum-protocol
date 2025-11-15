@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://oygk6nwavp0l"]
+[gd_scene load_steps=12 format=3 uid="uid://oygk6nwavp0l"]
 
 [ext_resource type="Script" path="res://Scripts/char.gd" id="1_j84vx"]
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="2_imqxn"]
+[ext_resource type="Texture2D" uid="uid://c54quvpdp8ueh" path="res://Assets/Andro/Abigail.png" id="3_263db"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35f7x"]
 atlas = ExtResource("2_imqxn")
@@ -62,10 +63,12 @@ animations = [{
 size = Vector2(16, 9)
 
 [node name="char" type="CharacterBody2D"]
+position = Vector2(1, -5)
 collision_layer = 2
 script = ExtResource("1_j84vx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_rxum1")
 animation = &"blink"
 autoplay = "blink"
@@ -76,5 +79,16 @@ frame_progress = 0.499569
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gugl8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.277213, 0.0691975, 0.0601145, 1)
+position = Vector2(-1, -2)
+scale = Vector2(0.0182059, 0.0182059)
+texture = ExtResource("3_263db")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.0163225, 0.0163225)
+texture = ExtResource("3_263db")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

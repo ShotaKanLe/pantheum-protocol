@@ -2,11 +2,26 @@ extends Area2D
 
 class_name Escalator
 @export var identityNumber : Vector2
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var animated_sprite_2d = $AnimationPlayer
 
 @export var direction : String = 'up'
 @onready var game = get_tree().get_first_node_in_group("GameController")
-var active = false
+var active = true
+
+func setDirectionAnimation():
+	if direction == 'up':
+		$Sprite2D.rotation_degrees = -90
+		$Sprite2D.scale = Vector2(0.05, 0.1)
+	if direction == 'down':
+		$Sprite2D.rotation_degrees = 90
+		$Sprite2D.scale = Vector2(0.05, 0.1)
+	if direction == 'left':
+		$Sprite2D.flip_h = true
+
+func _ready():
+	setDirectionAnimation()
+	if active:
+		animated_sprite_2d.play("idle")
 
 func _on_body_entered(body):
 	# Pastikan yang masuk adalah karakter pemain
@@ -50,8 +65,8 @@ func escalateTo(obj, direction):
 		
 func activated():
 	active = true
-	animated_sprite_2d.play("on")
+	animated_sprite_2d.play("idle")
 
 func deactivated():
 	active = false
-	animated_sprite_2d.play("off")	
+	$AnimationPlayer.stop()

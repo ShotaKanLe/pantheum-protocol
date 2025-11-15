@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://brpp6nxlbc24d"]
+[gd_scene load_steps=11 format=3 uid="uid://bse32esa8avh8"]
 
 [ext_resource type="Script" path="res://Scripts/Single Elements/fragile.gd" id="1_2xk8t"]
 [ext_resource type="Texture2D" uid="uid://cg6wipiqejrcj" path="res://Assets/Sprite/Char Andro-Sheet.png" id="1_s5yc3"]
 [ext_resource type="Texture2D" uid="uid://cflfh11khfnor" path="res://Assets/Main Assets.png" id="2_nihjv"]
+[ext_resource type="Texture2D" uid="uid://cg4obd8yi7gjj" path="res://Assets/TV/default/defaultUp.png" id="4_ecc5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6rc7"]
 atlas = ExtResource("2_nihjv")
@@ -63,6 +64,7 @@ collision_mask = 2
 script = ExtResource("1_2xk8t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 390
 sprite_frames = SubResource("SpriteFrames_4moru")
 animation = &"broken_bottom"
@@ -71,3 +73,9 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_7cf0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0.999999)
+scale = Vector2(0.0665509, 0.0665509)
+texture = ExtResource("4_ecc5o")
+region_rect = Rect2(32, 0, 32, 32)

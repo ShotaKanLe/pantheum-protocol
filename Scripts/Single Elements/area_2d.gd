@@ -8,6 +8,10 @@ var move_timer := 0.0
 
 const MOVE_INTERVAL := 0.40   # move every 0.4 seconds
 
+func _ready():
+	z_index = 101
+	$AnimationPlayer.play("idle")
+
 func _process(delta):
 	move_timer += delta
 	if move_timer < MOVE_INTERVAL:
@@ -42,7 +46,7 @@ func move_to(next: Vector2i):
 
 	var offset_y := 4
 	if next.y == game.gridSize.y - 1:
-		offset_y -= 6
+		offset_y += 0
 
 	global_position = Vector2(tile.position.x, tile.position.y + offset_y)
 
