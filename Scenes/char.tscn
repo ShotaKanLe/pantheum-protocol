@@ -58,16 +58,25 @@ animations = [{
 "speed": 1.0
 }]
 
+<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44doy"]
 size = Vector2(16, 13)
 
 [node name="char" type="Node2D"]
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gugl8"]
+size = Vector2(16, 9)
+
+[node name="char" type="CharacterBody2D"]
+collision_layer = 2
+>>>>>>> origin/fazar_mekanik
 script = ExtResource("1_j84vx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rxum1")
 animation = &"blink"
 autoplay = "blink"
+<<<<<<< HEAD
 frame_progress = 0.500919
 
 [node name="Timer" type="Timer" parent="."]
@@ -80,3 +89,14 @@ shape = SubResource("RectangleShape2D_44doy")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+=======
+frame_progress = 0.499569
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gugl8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+>>>>>>> origin/fazar_mekanik

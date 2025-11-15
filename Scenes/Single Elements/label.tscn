@@ -1,12 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3j05nivq27og"]
 
+<<<<<<< HEAD
 [ext_resource type="FontFile" uid="uid://dolykaix6pm8d" path="res://Assets/Fonts/CevicheOne-Regular.ttf" id="1_80ihk"]
+=======
+[ext_resource type="FontFile" uid="uid://c1hlkxvbcfvcv" path="res://Assets/Fonts/BoldPixels.ttf" id="1_vx701"]
+>>>>>>> origin/fazar_mekanik
 
 [sub_resource type="Theme" id="Theme_lwmen"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fug5q"]
+<<<<<<< HEAD
 font = ExtResource("1_80ihk")
 font_size = 100
+=======
+font = ExtResource("1_vx701")
+>>>>>>> origin/fazar_mekanik
 
 [node name="Label" type="Label"]
 offset_right = 31.0
