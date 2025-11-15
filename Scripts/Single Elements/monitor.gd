@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 class_name Monitor
->>>>>>> origin/fazar_mekanik
 extends Node2D
 
 const GRID_SIZE: int = 32

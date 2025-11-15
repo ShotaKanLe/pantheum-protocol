@@ -1,6 +1,79 @@
 extends Node2D
 class_name GameController
 
+const abigail = "res://Assets/Head/Abigail.png"
+const atlas = "res://Assets/Head/Atlas.png"
+const clorina = "res://Assets/Head/Clorina.png"
+const darkCyber = "res://Assets/Head/DarkCyber.png"
+const dyland = "res://Assets/Head/Dyland.png"
+const innera = "res://Assets/Head/Innera.png"
+const lyna = "res://Assets/Head/Lyna.png"
+const nefa = "res://Assets/Head/Nefa.png"
+const vanir = "res://Assets/Head/Vanir.png"
+const venrir = "res://Assets/Head/Venrir.png"
+const xein = "res://Assets/Head/Xein.png"
+
+var characterPlayed = 'clorina'
+
+func playAs(char):
+	pass
+	
+func setAvatar(name):
+	var forName
+	
+	if name == 'abigail':
+		forName = 'Abigail'
+		name = abigail
+	elif name == 'atlas':
+		forName = 'Atlas'
+		name = atlas
+	elif name == 'clorina':
+		forName = 'Clorina'
+		name = clorina
+	elif name == '???':
+		forName = '???'
+		name = darkCyber
+	elif name == 'dyland': 
+		forName = 'Dyland'
+		name = dyland
+	elif name == 'innera':
+		forName = 'Innera'
+		name = innera
+	elif name == 'lyna':
+		forName = 'Lyna'
+		name = lyna
+	elif name == 'nefa':
+		forName = 'Nefa'
+		name = nefa
+	elif name == 'vanir':
+		forName = 'Vanir'
+		name = vanir
+	elif name == 'venrir':
+		forName = 'Venrir'
+		name =venrir
+	elif name == 'xein':
+		forName = 'Xein'
+		name = xein
+		
+	$startButton/Node2D/Label.text = forName
+	$Node2D/avatarChar.texture = load (name)
+	$Node2D/avatarCharShadow.texture = load (name)
+						
+func setMonitor(sName: String = 'basicFaceForward', posX: int = 16, posY: int = 16, zIndex : int = 0, iNumber = Vector2(0,0)):
+	var monitor = monitorScene.instantiate()
+	monitor.spriteName = sName
+	monitor.position.x += posX
+	monitor.position.y += posY
+	monitor.identityNumber.x = iNumber.x
+	monitor.identityNumber.y = iNumber.y
+	monitor.z_index = zIndex
+	$TileManager.add_child(monitor)
+	
+func _on_button_3_pressed():
+	$buttonClick.play()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')
+
 const portalScene = preload("res://Scenes/Single Elements/portal.tscn")
 const energyScene = preload("res://Scenes/Single Elements/energy.tscn")
 const buttonScene = preload("res://Scenes/Single Elements/button.tscn")
@@ -63,8 +136,11 @@ var tileArray = [
 	['energy', null, {type="pressure", mech="escalator"}, 'fragile', 'hidden', 'energy']
 ]
 
-
 func _ready():
+	$inGame.play()
+	setAvatar('dyland')
+	setBoard()
+	setPlayerPosition(getTileInformation(Vector2(1,0)))
 	add_to_group("GameController")
 	setBoard()
 	spawnTiles()
@@ -100,7 +176,6 @@ func spawnTiles():
 					b.path = tile_type.path     # give its movement path
 					$TileManager.add_child(b)
 					set_object_position(b, x, y)
-
 			else:
 				if tile_type == "portal":
 					var p = portalScene.instantiate()
@@ -263,8 +338,6 @@ func push_block(from: Vector2i, to: Vector2i):
 			)
 
 			return
-
-
 
 # ---------------------------------------------------------
 # WHEN FRAGILE BREAKS
