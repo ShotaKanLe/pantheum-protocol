@@ -399,7 +399,7 @@ func setBoard():
 			monitor.spriteName = sprite
 			monitor.identityNumber = Vector2(x,y)
 			monitor.position = startingPoint + Vector2(tileSize*x, tileSize*y)
-			monitor.z_index = -1
+			monitor.z_index = maxIndex
 			$TileManager.add_child(monitor)
 
 # ---------------------------------------------------------
